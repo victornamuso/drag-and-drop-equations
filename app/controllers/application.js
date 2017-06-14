@@ -17,11 +17,11 @@ const {get,Controller} = Ember;
 export default Controller.extend({
   mathOperators,
   variableOperators,
-  fields: Ember.A(),
+  instructions: Ember.A(),
   result: null,
   buildEquation(){
-    let fields = this.get("fields");
-    let result = fields.map(item => {
+    let instructions = this.get("instructions");
+    let result = instructions.map(item => {
       let itemType = item.type;
       let value = item.value;
       return itemType === "math" ? value : this.get(`${value}Value`);
@@ -41,12 +41,12 @@ export default Controller.extend({
     dragStop(e){
     },
     addField(field){
-      let fields = get(this,"fields");
-      if(fields.length && fields.get("lastObject").type === field.type){
+      let instructions = get(this,"instructions");
+      if(instructions.length && instructions.get("lastObject").type === field.type){
 	alert("Invalid operator");
 	return;
       }
-      this.get("fields").pushObject(field);
+      this.get("instructions").pushObject(field);
       this.calculate();
     },
     calculate(){
