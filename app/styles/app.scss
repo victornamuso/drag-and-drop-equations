@@ -1,0 +1,37 @@
+html,body{
+  margin-top:50px;
+}
+.equation-group{
+  &.accepts-drag{
+    background-color: rgba(0,0,0,0.1);
+  }
+  padding:20px;
+  height: 200px;
+  border:2px solid #e9e9e9;
+  @mixin equation-part{
+    margin-right: 4px;
+    &.accepts-drag{
+      background-color: rgba(255,0,0,0.2);
+    }
+  }
+  span.equation-part-variable{
+    @extend .label; 
+    @extend .label-primary;
+    @include equation-part;
+  }
+
+  span.equation-part-math{
+    @extend .label; 
+    @extend .label-info;
+    @include equation-part;
+  }
+}
+div.operators{
+  span.label{
+    margin-right:4px;
+    width:20px;
+    text-align:center;
+  }
+}
+
+@import "ember-bootstrap/bootstrap";
